@@ -43,13 +43,13 @@ function ApplicationsView() {
     return (
         <div className="container-fluid">
             <div className="row g-3">
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments}/>
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments}/>
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments}/>
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments}/>
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments}/>
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments}/>
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments}/>
+                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
+                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
+                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
+                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
+                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
+                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
+                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
             </div>
         </div>
     )

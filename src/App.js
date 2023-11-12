@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 function App() {
 
   return (
-    <div className="App">
+    <div className="App mb-5">
       <Header />
       <div className="container">
         <Outlet />
