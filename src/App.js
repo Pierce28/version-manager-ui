@@ -1,13 +1,13 @@
 import './App.css';
-import Header from './Header';
+import Header from './common/Header';
 import { Outlet } from "react-router-dom";
 
 function App() {
 
   return (
-    <div className="App mb-5">
+    <div className="App mb-3">
       <Header />
-      <div className="container">
+      <div className="container-fluid">
         <Outlet />
       </div>
     </div>

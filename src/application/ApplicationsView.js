@@ -1,58 +1,208 @@
+import { useLoaderData, useNavigation } from "react-router-dom";
 import Application from "./Application";
+import LoadingView from "../common/LoadingView";
 
 function ApplicationsView() {
 
-    // This is where I'd call the backend... IF I HAD ONE!
-    // (I should have multiple of these and then loop over the results... but this is a big object)
-    const applicationDetails = {
-        name: "Funny Non-Descriptive App Name",
-        owner: "Fighting Mongooses",
-        repo: "https://github.com/Pierce28/version-manager-ui/",
-        environments: [
-            {
-                name: "Development",
-                version: "42.00",
-                gitCommitHash: "839d704",
-                logs: "http://localhost:3000/logs/dev",
-                jenkins: "http://localhost:3000/jenkins/dev"
-            },
-            {
-                name: "Integration",
-                version: "43.00",
-                gitCommitHash: "71a2b45",
-                logs: "http://localhost:3000/logs/int",
-                jenkins: "http://localhost:3000/jenkins/int"
-            },
-            {
-                name: "Staging",
-                version: "44.00",
-                gitCommitHash: "2d1fddb",
-                logs: "http://localhost:3000/logs/stage",
-                jenkins: "http://localhost:3000/jenkins/stage"
-            },
-            {
-                name: "Production",
-                version: "44.00",
-                gitCommitHash: "2d1fddb",
-                logs: "http://localhost:3000/logs/prod",
-                jenkins: "http://localhost:3000/jenkins/prod"
-            },
-        ],
-    };
+    const applicationsData = useLoaderData();
+    const navigation = useNavigation();
+
+    if (navigation.state === "loading") {
+        return <LoadingView />
+    }
+
+    const applications = applicationsData.map((application) =>
+        <Application name={application.name} owner={application.owner} repo={application.repo} environments={application.environments} key={application.name} />
+    );
 
     return (
         <div className="container-fluid">
             <div className="row g-3">
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
-                <Application name={applicationDetails.name} owner={applicationDetails.owner} repo={applicationDetails.repo} environments={applicationDetails.environments} />
+                {applications}
             </div>
         </div>
     )
-}
+};
 
 export default ApplicationsView;
+
+export const applicationsLoader = async () => {
+    // This is where we'll call the backend eventually... but let's fake it for now
+    return [
+        {
+            name: "Funny Non-Descriptive App Name",
+            owner: "Fighting Mongooses",
+            repo: "https://github.com/Pierce28/version-manager-ui/",
+            environments: [
+                {
+                    name: "Development",
+                    version: "42.00",
+                    gitCommitHash: "839d704",
+                    logs: "http://localhost:3000/logs/dev",
+                    jenkins: "http://localhost:3000/jenkins/dev"
+                },
+                {
+                    name: "Integration",
+                    version: "43.00",
+                    gitCommitHash: "71a2b45",
+                    logs: "http://localhost:3000/logs/int",
+                    jenkins: "http://localhost:3000/jenkins/int"
+                },
+                {
+                    name: "Staging",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/stage",
+                    jenkins: "http://localhost:3000/jenkins/stage"
+                },
+                {
+                    name: "Production",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/prod",
+                    jenkins: "http://localhost:3000/jenkins/prod"
+                },
+            ],
+        },
+        {
+            name: "Boring But Descriptive App Name",
+            owner: "Fighting Mongooses",
+            repo: "https://github.com/Pierce28/version-manager-ui/",
+            environments: [
+                {
+                    name: "Development",
+                    version: "42.00",
+                    gitCommitHash: "839d704",
+                    logs: "http://localhost:3000/logs/dev",
+                    jenkins: "http://localhost:3000/jenkins/dev"
+                },
+                {
+                    name: "Integration",
+                    version: "43.00",
+                    gitCommitHash: "71a2b45",
+                    logs: "http://localhost:3000/logs/int",
+                    jenkins: "http://localhost:3000/jenkins/int"
+                },
+                {
+                    name: "Staging",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/stage",
+                    jenkins: "http://localhost:3000/jenkins/stage"
+                },
+                {
+                    name: "Production",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/prod",
+                    jenkins: "http://localhost:3000/jenkins/prod"
+                },
+            ],
+        },
+        {
+            name: "Auth Service",
+            owner: "Fighting Mongooses",
+            repo: "https://github.com/Pierce28/version-manager-ui/",
+            environments: [
+                {
+                    name: "Development",
+                    version: "42.00",
+                    gitCommitHash: "839d704",
+                    logs: "http://localhost:3000/logs/dev",
+                    jenkins: "http://localhost:3000/jenkins/dev"
+                },
+                {
+                    name: "Integration",
+                    version: "43.00",
+                    gitCommitHash: "71a2b45",
+                    logs: "http://localhost:3000/logs/int",
+                    jenkins: "http://localhost:3000/jenkins/int"
+                },
+                {
+                    name: "Staging",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/stage",
+                    jenkins: "http://localhost:3000/jenkins/stage"
+                },
+                {
+                    name: "Production",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/prod",
+                    jenkins: "http://localhost:3000/jenkins/prod"
+                },
+            ],
+        },
+        {
+            name: "Entitlement Service",
+            owner: "Fighting Mongooses",
+            repo: "https://github.com/Pierce28/version-manager-ui/",
+            environments: [
+                {
+                    name: "Development",
+                    version: "42.00",
+                    gitCommitHash: "839d704",
+                    logs: "http://localhost:3000/logs/dev",
+                    jenkins: "http://localhost:3000/jenkins/dev"
+                },
+                {
+                    name: "Integration",
+                    version: "43.00",
+                    gitCommitHash: "71a2b45",
+                    logs: "http://localhost:3000/logs/int",
+                    jenkins: "http://localhost:3000/jenkins/int"
+                },
+                {
+                    name: "Staging",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/stage",
+                    jenkins: "http://localhost:3000/jenkins/stage"
+                },
+                {
+                    name: "Production",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/prod",
+                    jenkins: "http://localhost:3000/jenkins/prod"
+                },
+            ],
+        },
+        {
+            name: "Round Down Penny Service",
+            owner: "Fighting Mongooses",
+            repo: "https://github.com/Pierce28/version-manager-ui/",
+            environments: [
+                {
+                    name: "Development",
+                    version: "42.00",
+                    gitCommitHash: "839d704",
+                    logs: "http://localhost:3000/logs/dev",
+                    jenkins: "http://localhost:3000/jenkins/dev"
+                },
+                {
+                    name: "Integration",
+                    version: "43.00",
+                    gitCommitHash: "71a2b45",
+                    logs: "http://localhost:3000/logs/int",
+                    jenkins: "http://localhost:3000/jenkins/int"
+                },
+                {
+                    name: "Staging",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/stage",
+                    jenkins: "http://localhost:3000/jenkins/stage"
+                },
+                {
+                    name: "Production",
+                    version: "44.00",
+                    gitCommitHash: "2d1fddb",
+                    logs: "http://localhost:3000/logs/prod",
+                    jenkins: "http://localhost:3000/jenkins/prod"
+                },
+            ],
+        },
+    ];
+};

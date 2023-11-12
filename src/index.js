@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
@@ -7,10 +7,10 @@ import {
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './App';
-import OrganizationsView from './organization/OrganizationsView';
-import ErrorPage from './ErrorPage';
+import OrganizationsView, { organizationsLoader } from './organization/OrganizationsView';
+import ErrorPage from './common/ErrorPage';
 import reportWebVitals from './reportWebVitals';
-import ApplicationsView from './application/ApplicationsView';
+import ApplicationsView, { applicationsLoader } from './application/ApplicationsView';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
@@ -22,10 +22,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <OrganizationsView />,
+        loader: organizationsLoader,
       },
       {
         path: "/organization/:organizationId/applications",
-        element: <ApplicationsView />
+        element: <ApplicationsView />,
+        loader: applicationsLoader,
       }
     ],
   },
