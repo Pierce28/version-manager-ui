@@ -9,7 +9,7 @@ function Organization(props) {
                     <p className="card-text">{props.description}</p>
                 </div>
                 <div className="card-footer d-flex justify-content-center">
-                    <Link to={`organization/1/applications`} className="btn btn-primary">Go to Applications</Link>
+                    <Link to={`organization/${props.name}/applications`} className="btn btn-primary">Go to Applications</Link>
                 </div>
             </div>
         </div>

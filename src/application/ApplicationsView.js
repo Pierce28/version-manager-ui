@@ -1,6 +1,7 @@
 import { useLoaderData, useNavigation } from "react-router-dom";
 import Application from "./Application";
 import LoadingView from "../common/LoadingView";
+import axios from "axios";
 
 function ApplicationsView() {
 
@@ -29,8 +30,16 @@ function ApplicationsView() {
 
 export default ApplicationsView;
 
-export const applicationsLoader = async () => {
-    // This is where we'll call the backend eventually... but let's fake it for now
+export const applicationsLoader = async ({params}) => {
+    return await axios.get(`/api/org/${params.organizationId}`).then(response => {
+        return response.data;
+    })
+    .catch(err => {
+        throw err;
+    });
+
+    // Sample data - TODO - remove this once its moved to the backend
+    /*
     return {
         organization: "Fighting Mongooses",
         applications: [
@@ -211,4 +220,5 @@ export const applicationsLoader = async () => {
             },
         ]
     }
+    */
 };

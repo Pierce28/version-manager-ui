@@ -1,6 +1,7 @@
 import LoadingView from "../common/LoadingView";
 import Organization from "./Organization";
 import { useLoaderData, useNavigation } from "react-router-dom";
+import axios from "axios";
 
 function OrganizationsView() {
 
@@ -27,28 +28,10 @@ function OrganizationsView() {
 export default OrganizationsView;
 
 export const organizationsLoader = async () => {
-    // This is where we'll call the backend eventually... but let's fake it for now
-    return [
-        {
-            name: "Fighting Mongooses"
-        },
-        {
-            name: "Wolfpack"
-        },
-        {
-            name: "Panthers"
-        },
-        {
-            name: "Red"
-        },
-        {
-            name: "Blue"
-        },
-        {
-            name: "Team Awesome"
-        },
-        {
-            name: "Escalations and Bug Triage"
-        },
-    ];
+    return await axios.get("/api/orgs").then(response => {
+        return response.data;
+    })
+    .catch(err => {
+        throw err;
+    });
 };
