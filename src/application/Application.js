@@ -5,7 +5,7 @@ function Application(props) {
             <div className="hstack gap-3">
                 <EnvironmentValue attribute="Version" value={environment.version} />
                 <EnvironmentValue attribute="Commit Hash" value={environment.gitCommitHash} />
-                <EnvironmentButtons />
+                <EnvironmentButtons logs={environment.logs} jenkins={environment.jenkins} />
             </div>
         </li>
     );
@@ -40,8 +40,8 @@ function EnvironmentValue(props) {
 function EnvironmentButtons(props) {
     return (
         <div className="btn-group ms-auto" role="group">
-            <a className="btn btn-outline-primary" role="button" href="#" target="_blank">Logs</a>
-            <a className="btn btn-outline-primary" role="button" href="#" target="_blank">Jenkins</a>
+            <a className="btn btn-outline-primary" role="button" href={props.logs} target="_blank">Logs</a>
+            <a className="btn btn-outline-primary" role="button" href={props.jenkins} target="_blank">Jenkins</a>
         </div>
     );
 };
